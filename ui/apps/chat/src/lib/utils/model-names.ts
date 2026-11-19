@@ -26,6 +26,9 @@ export function normalizeModelName(modelName: string): string {
 		return '';
 	}
 
+	// FORK: localchat gateway cloud IDs (cloud@<provider>/<model>) keep their inner slashes
+	if (trimmed.startsWith('cloud@')) return trimmed;
+
 	const segments = trimmed.split(FILE_PATH_SEPARATOR_REGEX);
 
 	// If we have exactly 2 segments (one slash), treat it as Hugging Face repo format
