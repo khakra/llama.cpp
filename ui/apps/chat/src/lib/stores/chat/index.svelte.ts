@@ -760,7 +760,9 @@ class ChatStore implements ChatStreamHost, ChatFlowsHost {
 		const resourceExtras = mcpStore.consumeResourceAttachmentsAsExtras();
 		const allExtras = resourceExtras.length > 0 ? [...(extras || []), ...resourceExtras] : extras;
 
-		let isNewConversation = false;
+		// FORK: localchat. A ?q= deep link (and the app's quick prompt) creates the conversation
+		// before sending, so its first message must still count as new, or the title stays "Chat <date>".
+		let isNewConversation = !!activeConv && conversationsStore.activeMessages.length === 0;
 
 		if (!activeConv) {
 			await conversationsStore.createConversation();
