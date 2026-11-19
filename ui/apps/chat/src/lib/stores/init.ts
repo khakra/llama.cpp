@@ -6,6 +6,7 @@ import { settingsStore } from './settings/index.svelte';
 import { tabsStore } from './tabs.svelte';
 import { toolsStore } from './tools.svelte';
 import { versionStore } from './version.svelte';
+import { addLocalchatMcpServer } from '#lib/localchat/mcp-server.ts'; // FORK: localchat
 import { MigrationService } from '#lib/services/migration.service.ts';
 import { validateApiKey } from '#lib/utils/api-key-validation.ts';
 import { browser } from '$app/env';
@@ -32,6 +33,7 @@ export function initStores(): Promise<void> {
 		void requestPersistentStorage();
 
 		settingsStore.initialize();
+		void addLocalchatMcpServer(); // FORK: localchat, the app's own MCP server
 		permissionsStore.initialize();
 		toolsStore.initialize();
 		void versionStore.initialize();
