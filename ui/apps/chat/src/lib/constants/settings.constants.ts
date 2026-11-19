@@ -18,6 +18,7 @@ import {
 	SlidersVertical,
 	Sun
 } from '@lucide/svelte';
+import { Cloud } from '@lucide/svelte'; // FORK: localchat Settings › Cloud
 import { SurfaceTheme, SyncableParameterType } from '#lib/enums/index.ts';
 import { SettingsFieldType } from '#lib/enums/settings.enums.ts';
 import { ColorMode } from '#lib/enums/ui.enums.ts';
@@ -32,6 +33,7 @@ import type {
 /** Settings sections — slug is the routing identity, title is the display label. */
 export const SETTINGS_SECTIONS = {
 	AGENTIC: { slug: 'agentic', title: 'Agentic' },
+	CLOUD: { slug: 'cloud', title: 'Cloud' }, // FORK: localchat
 	DEVELOPER: { slug: 'developer', title: 'Developer' },
 	DISPLAY: { slug: 'display', title: 'Display' },
 	GENERAL: { slug: 'general', title: 'General' },
@@ -42,6 +44,7 @@ export const SETTINGS_SECTIONS = {
 
 export const SETTINGS_SECTION_SLUGS = {
 	AGENTIC: SETTINGS_SECTIONS.AGENTIC.slug,
+	CLOUD: SETTINGS_SECTIONS.CLOUD.slug, // FORK: localchat
 	DEVELOPER: SETTINGS_SECTIONS.DEVELOPER.slug,
 	DISPLAY: SETTINGS_SECTIONS.DISPLAY.slug,
 	GENERAL: SETTINGS_SECTIONS.GENERAL.slug,
@@ -52,6 +55,7 @@ export const SETTINGS_SECTION_SLUGS = {
 
 export const SETTINGS_SECTION_TITLES = {
 	AGENTIC: SETTINGS_SECTIONS.AGENTIC.title,
+	CLOUD: SETTINGS_SECTIONS.CLOUD.title, // FORK: localchat
 	DEVELOPER: SETTINGS_SECTIONS.DEVELOPER.title,
 	DISPLAY: SETTINGS_SECTIONS.DISPLAY.title,
 	GENERAL: SETTINGS_SECTIONS.GENERAL.title,
@@ -236,6 +240,13 @@ export const SETTINGS_REGISTRY: SettingsSectionEntry[] = [
 		],
 		slug: SETTINGS_SECTION_SLUGS.GENERAL,
 		title: SETTINGS_SECTION_TITLES.GENERAL
+	},
+	// FORK: localchat Settings › Cloud (rendered by SettingsCloudTab)
+	{
+		icon: Cloud,
+		settings: [],
+		slug: SETTINGS_SECTION_SLUGS.CLOUD,
+		title: SETTINGS_SECTION_TITLES.CLOUD
 	},
 	// Display
 	{

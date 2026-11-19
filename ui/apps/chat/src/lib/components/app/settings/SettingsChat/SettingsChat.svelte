@@ -18,6 +18,7 @@
 		SETTINGS_SECTION_SLUGS
 	} from '#lib/constants/index.ts';
 	import { ColorMode } from '#lib/enums/ui.enums.ts';
+	import SettingsCloudTab from '#lib/localchat/SettingsCloudTab.svelte'; // FORK: localchat
 	import { modelsStore, serverStore, settingsStore } from '#lib/stores/index.ts';
 	import type { SettingsSection, SettingsSectionTitle } from '#lib/types/index.ts';
 	import { applySurfaceTheme } from '#lib/utils/index.ts';
@@ -181,6 +182,9 @@
 						<SettingsChatToolsTab />
 					{:else if currentSection.slug === SETTINGS_SECTION_SLUGS.IMPORT_EXPORT}
 						<SettingsChatImportExportTab />
+						<!-- FORK: localchat Settings › Cloud -->
+					{:else if currentSection.slug === SETTINGS_SECTION_SLUGS.CLOUD}
+						<SettingsCloudTab />
 					{:else if currentSection.fields}
 						<div class="space-y-6">
 							<SettingsChatFields
