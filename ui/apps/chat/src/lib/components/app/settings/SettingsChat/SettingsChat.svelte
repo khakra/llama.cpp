@@ -211,14 +211,7 @@
 					{/if}
 				</div>
 
-				<!-- FORK: localchat sections are saved in the app, not in localStorage -->
-				{#if currentSection.slug !== SETTINGS_SECTION_SLUGS.CLOUD && currentSection.slug !== SETTINGS_SECTION_SLUGS.MEMORY}
-					<div class="mt-8 border-t border-border/30 pt-6 pb-6">
-						<p class="text-xs text-muted-foreground">
-							Settings are saved in browser's localStorage
-						</p>
-					</div>
-				{/if}
+				<!-- FORK: localchat removed upstream's "Settings are saved in browser's localStorage" note -->
 			</div>
 
 			<SettingsFooter {hasChanges} onSave={handleSave} />
