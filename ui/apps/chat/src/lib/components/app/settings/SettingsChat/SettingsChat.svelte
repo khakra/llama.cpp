@@ -19,6 +19,7 @@
 	} from '#lib/constants/index.ts';
 	import { ColorMode } from '#lib/enums/ui.enums.ts';
 	import SettingsCloudTab from '#lib/localchat/SettingsCloudTab.svelte'; // FORK: localchat
+	import SettingsMemoryTab from '#lib/localchat/SettingsMemoryTab.svelte'; // FORK: localchat
 	import { modelsStore, serverStore, settingsStore } from '#lib/stores/index.ts';
 	import type { SettingsSection, SettingsSectionTitle } from '#lib/types/index.ts';
 	import { applySurfaceTheme } from '#lib/utils/index.ts';
@@ -185,6 +186,8 @@
 						<!-- FORK: localchat Settings › Cloud -->
 					{:else if currentSection.slug === SETTINGS_SECTION_SLUGS.CLOUD}
 						<SettingsCloudTab />
+					{:else if currentSection.slug === SETTINGS_SECTION_SLUGS.MEMORY}
+						<SettingsMemoryTab />
 					{:else if currentSection.fields}
 						<div class="space-y-6">
 							<SettingsChatFields
@@ -208,9 +211,14 @@
 					{/if}
 				</div>
 
-				<div class="mt-8 border-t border-border/30 pt-6 pb-6">
-					<p class="text-xs text-muted-foreground">Settings are saved in browser's localStorage</p>
-				</div>
+				<!-- FORK: localchat sections are saved in the app, not in localStorage -->
+				{#if currentSection.slug !== SETTINGS_SECTION_SLUGS.CLOUD && currentSection.slug !== SETTINGS_SECTION_SLUGS.MEMORY}
+					<div class="mt-8 border-t border-border/30 pt-6 pb-6">
+						<p class="text-xs text-muted-foreground">
+							Settings are saved in browser's localStorage
+						</p>
+					</div>
+				{/if}
 			</div>
 
 			<SettingsFooter {hasChanges} onSave={handleSave} />

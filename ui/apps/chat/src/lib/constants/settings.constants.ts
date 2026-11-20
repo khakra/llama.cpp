@@ -18,7 +18,7 @@ import {
 	SlidersVertical,
 	Sun
 } from '@lucide/svelte';
-import { Cloud } from '@lucide/svelte'; // FORK: localchat Settings › Cloud
+import { Brain, Cloud } from '@lucide/svelte'; // FORK: localchat Settings › Cloud, Memory
 import { SurfaceTheme, SyncableParameterType } from '#lib/enums/index.ts';
 import { SettingsFieldType } from '#lib/enums/settings.enums.ts';
 import { ColorMode } from '#lib/enums/ui.enums.ts';
@@ -38,6 +38,7 @@ export const SETTINGS_SECTIONS = {
 	DISPLAY: { slug: 'display', title: 'Display' },
 	GENERAL: { slug: 'general', title: 'General' },
 	IMPORT_EXPORT: { slug: 'import-export', title: 'Import/Export' },
+	MEMORY: { slug: 'memory', title: 'Memory' }, // FORK: localchat
 	SAMPLING_PENALTIES: { slug: 'sampling-penalties', title: 'Sampling & Penalties' },
 	TOOLS: { slug: 'tools', title: 'Tools' }
 } as const;
@@ -49,6 +50,7 @@ export const SETTINGS_SECTION_SLUGS = {
 	DISPLAY: SETTINGS_SECTIONS.DISPLAY.slug,
 	GENERAL: SETTINGS_SECTIONS.GENERAL.slug,
 	IMPORT_EXPORT: SETTINGS_SECTIONS.IMPORT_EXPORT.slug,
+	MEMORY: SETTINGS_SECTIONS.MEMORY.slug, // FORK: localchat
 	SAMPLING_PENALTIES: SETTINGS_SECTIONS.SAMPLING_PENALTIES.slug,
 	TOOLS: SETTINGS_SECTIONS.TOOLS.slug
 } as const;
@@ -60,6 +62,7 @@ export const SETTINGS_SECTION_TITLES = {
 	DISPLAY: SETTINGS_SECTIONS.DISPLAY.title,
 	GENERAL: SETTINGS_SECTIONS.GENERAL.title,
 	IMPORT_EXPORT: SETTINGS_SECTIONS.IMPORT_EXPORT.title,
+	MEMORY: SETTINGS_SECTIONS.MEMORY.title, // FORK: localchat
 	SAMPLING_PENALTIES: SETTINGS_SECTIONS.SAMPLING_PENALTIES.title,
 	TOOLS: SETTINGS_SECTIONS.TOOLS.title
 } as const;
@@ -247,6 +250,13 @@ export const SETTINGS_REGISTRY: SettingsSectionEntry[] = [
 		settings: [],
 		slug: SETTINGS_SECTION_SLUGS.CLOUD,
 		title: SETTINGS_SECTION_TITLES.CLOUD
+	},
+	// FORK: localchat Settings › Memory (rendered by SettingsMemoryTab)
+	{
+		icon: Brain,
+		settings: [],
+		slug: SETTINGS_SECTION_SLUGS.MEMORY,
+		title: SETTINGS_SECTION_TITLES.MEMORY
 	},
 	// Display
 	{
