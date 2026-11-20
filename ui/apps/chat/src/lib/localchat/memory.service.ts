@@ -11,7 +11,6 @@ export interface MemoryItem {
 
 export interface MemorySettings {
 	enabled: boolean;
-	withCloud: boolean;
 }
 
 const BASE = './localchat/memory';

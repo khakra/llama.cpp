@@ -8,7 +8,7 @@
 	import { onMount } from 'svelte';
 
 	let memories = $state<MemoryItem[]>([]);
-	let settings = $state<MemorySettings>({ enabled: true, withCloud: true });
+	let settings = $state<MemorySettings>({ enabled: true });
 	let loading = $state(true);
 	let unavailable = $state<string | null>(null);
 	let error = $state<string | null>(null);
@@ -120,29 +120,13 @@
 					<span class="block font-medium">Use memories in chats</span>
 
 					<span class="block text-xs text-muted-foreground">
-						Adds what LocalChat knows about you to each chat.
+						Adds what LocalChat knows about you to each chat, with every model, local or cloud.
 					</span>
 				</span>
 
 				<Switch
 					checked={settings.enabled}
 					onCheckedChange={(value) => setSetting({ enabled: value })}
-				/>
-			</label>
-
-			<label class={['flex items-center gap-3', !settings.enabled && 'opacity-50']}>
-				<span class="flex-1">
-					<span class="block font-medium">Include with cloud models</span>
-
-					<span class="block text-xs text-muted-foreground">
-						Your memories are sent to the cloud provider with each message to a cloud model.
-					</span>
-				</span>
-
-				<Switch
-					checked={settings.withCloud}
-					disabled={!settings.enabled}
-					onCheckedChange={(value) => setSetting({ withCloud: value })}
 				/>
 			</label>
 		</div>

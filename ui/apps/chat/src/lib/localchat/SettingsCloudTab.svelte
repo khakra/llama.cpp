@@ -155,8 +155,8 @@
 <div class="space-y-4">
 	<p class="text-sm text-muted-foreground">
 		Use cloud models next to your local ones. Messages to a cloud model are sent to that provider
-		over the internet, together with your memories if Settings › Memory allows it. Keys are stored
-		in your Mac’s Keychain; this page can save them but never reads them back.
+		over the internet, together with your memories if Memory is on. Keys are stored in your Mac’s
+		Keychain; this page can save them but never reads them back.
 	</p>
 
 	{#if loading}
